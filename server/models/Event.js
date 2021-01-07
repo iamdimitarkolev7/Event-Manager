@@ -22,6 +22,10 @@ const EventSchema = new mongoose.Schema({
       type: String,
       required: true
     },
+    admin: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    },
     likes: [{
         type: mongoose.Types.ObjectId,
         ref: 'User'

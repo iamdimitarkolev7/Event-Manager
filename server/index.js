@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 
 const homeRouters = require('../server/routers/home.routers');
 const userRouters = require('../server/routers/user.routers');
+const eventRouters = require('../server/routers/event.routers');
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use(bodyParser.json());
 
 app.use('/', homeRouters);
 app.use('/user', userRouters);
+app.use('/event', eventRouters);
 
 app.listen(process.env.PORT, () => console.log('Server listening on port ' + process.env.PORT));

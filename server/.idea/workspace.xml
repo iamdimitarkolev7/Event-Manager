@@ -20,30 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b344209b-2493-44c0-861d-b3b955d0dda3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/Event-Manager.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/server.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/event.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/home.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/user.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Event.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/User.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/event.routers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/home.routers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/user.routers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/home.routers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/home.routers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/user.routers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/user.routers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +96,8 @@
       <workItem from="1609946078382" duration="402000" />
       <workItem from="1609946498328" duration="6518000" />
       <workItem from="1609954132471" duration="52000" />
+      <workItem from="1609972418387" duration="1298000" />
+      <workItem from="1610009566969" duration="2615000" />
     </task>
     <servers />
   </component>

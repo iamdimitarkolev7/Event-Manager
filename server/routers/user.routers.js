@@ -13,7 +13,7 @@ router.get('/register', getUserStatus, (req, res) => {
     }
 });
 
-router.get('/login',getUserStatus, (req, res) => {
+router.get('/login', getUserStatus, (req, res) => {
     if (req.isLoggedIn) {
         res.send('Already logged in');
     } else {

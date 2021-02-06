@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+
+.Navigation {
+    background: ghostwhite;
+    position: static;
+    color: inherit;
+    border-radius: 20px;
+    margin: 40px 200px 0 200px;
+    display: flex;
+}
+
+.Navigation .logo {
+    width: 100%;
+    margin-left: 50px;
+    display: flex;
+    cursor: pointer;
+}
+
+.Navigation .logo img {
+    margin: 15px 2px 15px 0;
+    width: 65px;
+}
+
+.Navigation .logo p {
+    font-family: 'Potta One', cursive;
+    color: #017fbe;
+    margin: 0 auto;
+    margin-left: 5px;
+    font-size: 65px;
+}
+
+.Navigation ul {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 80px;
+}
+
+.Navigation .links {
+    list-style-type: none;
+    font-size: 21px;
+    font-weight: bolder;
+    margin: 10px;
+    padding: 5px 15px 5px 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #017fbe;
+    color: ghostwhite;
+}
+

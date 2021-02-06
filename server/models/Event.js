@@ -29,14 +29,6 @@ const EventSchema = new mongoose.Schema({
     likes: [{
         type: mongoose.Types.ObjectId,
         ref: 'User'
-    }],
-    interestedIn: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'User'
-    }],
-    going: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'User'
     }]
 });
 

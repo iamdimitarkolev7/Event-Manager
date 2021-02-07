@@ -10,6 +10,7 @@
 }
 
 .Navigation .logo {
+    text-decoration: none;
     width: 100%;
     margin-left: 50px;
     display: flex;
@@ -37,6 +38,7 @@
 }
 
 .Navigation .links {
+    text-decoration: none;
     list-style-type: none;
     font-size: 21px;
     font-weight: bolder;

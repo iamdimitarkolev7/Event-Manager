@@ -4,8 +4,10 @@ const cors = require('cors');
 const secret = 'secret';
 
 module.exports = (app) => {
-    app.use(cookieParser(secret));
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(bodyParser.json());
     app.use(cors());
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
+    app.use(cookieParser(secret));
 };

@@ -1,0 +1,9 @@
+.Events {
+    max-width: 100%;
+    display: flex;
+    margin: 40px 250px 0 250px;
+}
+
+.Events .Event {
+    margin: 0 auto;
+}

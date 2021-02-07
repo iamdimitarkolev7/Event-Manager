@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
 
 .Navigation {
-    background: ghostwhite;
+    background-color: ghostwhite;
     position: static;
-    color: inherit;
     border-radius: 20px;
     margin: 40px 200px 0 200px;
     display: flex;

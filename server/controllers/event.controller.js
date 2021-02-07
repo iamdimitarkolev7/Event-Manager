@@ -2,16 +2,16 @@ const models = require('../models');
 
 module.exports = {
     get: (req, res, next) => {
-        models.Event.find().populate('author')
+        models.Event.find().populate('admin')
             .then((events) => res.send(events))
             .catch(next);
     },
 
     post: (req, res, next) => {
-        const { description } = req.body;
+        const { description, location, name, date, imageURL } = req.body;
         const { _id } = req.user;
 
-        models.Event.create({ description, author: _id })
+        models.Event.create({ description, location, name, date, imageURL, admin: _id })
             .then((createdEvent) => {
                 return Promise.all([
                     models.User.updateOne({ _id }, { $push: { createdEvents: createdEvent } }),

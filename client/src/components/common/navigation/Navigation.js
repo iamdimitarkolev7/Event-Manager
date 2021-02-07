@@ -14,6 +14,8 @@ const Navigation = () => {
             <ul>
                 <Link to="/register" className="links">Register</Link>
                 <Link to="/login" className="links">Login</Link>
+                <Link to="/create" className="links">Create</Link>
+                <Link to="/profile" className="links">Profile</Link>
             </ul>
         </nav>
     )

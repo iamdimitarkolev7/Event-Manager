@@ -1,0 +1,17 @@
+.Register {
+    background-color: ghostwhite;
+    border-radius: 5px;
+    width: 20%;
+    margin: 0 auto;
+}
+
+
+.Register .input {
+    margin: 25px 0;
+}
+
+.Register .input span {
+    color: lightslategrey;
+    position: absolute;
+}
+

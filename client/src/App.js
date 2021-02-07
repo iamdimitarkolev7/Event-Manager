@@ -6,7 +6,6 @@ import Navigation from "./components/common/navigation/Navigation";
 import Home from "./components/common/home/Home";
 import Register from "./components/user/register/Register";
 import Login from "./components/user/login/Login";
-import Footer from "./components/common/footer/Footer";
 
 const App = () => {
   return (
@@ -17,7 +16,6 @@ const App = () => {
           <Route path="/register" component={Register}/>
           <Route path="/login" component={Login} />
       </Switch>
-        <Footer/>
     </div>
   );
 }

@@ -34,15 +34,18 @@
     display: flex;
     justify-content: flex-end;
     padding-right: 80px;
+    margin: auto;
 }
 
 .Navigation .links {
+    width: 70px;
+    height: 20px;
     text-decoration: none;
     list-style-type: none;
-    font-size: 21px;
-    font-weight: bolder;
-    margin: 10px;
-    padding: 5px 15px 5px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 10px 15px 15px 15px;
     cursor: pointer;
     border-radius: 10px;
     background-color: #017fbe;

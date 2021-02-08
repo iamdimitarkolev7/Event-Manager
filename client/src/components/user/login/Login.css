@@ -1,17 +1,2 @@
-.Login {
-    background-color: ghostwhite;
-    border-radius: 5px;
-    width: 20%;
-    margin: 0 auto;
-}
 
-
-.Login .input {
-    margin: 25px 0;
-}
-
-.Login .input span {
-    color: lightslategrey;
-    position: absolute;
-}
 

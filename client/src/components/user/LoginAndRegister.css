@@ -1,4 +1,4 @@
-.Register {
+.Register, .Login {
     background-color: ghostwhite;
     border-radius: 5px;
     width: 20%;
@@ -6,17 +6,17 @@
     margin-top: 30px;
 }
 
-.Register .title {
+.title {
     padding-top: 20px;
     font-size: 20px;
     font-weight: 500;
 }
 
-.Register .input {
+.input {
     margin: 25px 0;
 }
 
-.Register .input input {
+.input input {
     width: 80%;
     height: 30px;
     border: 2px solid gainsboro;
@@ -24,11 +24,11 @@
     padding: 6px 0 5px 10px;
 }
 
-.Register .input input::placeholder {
+.input input::placeholder {
     color: lightslategrey;
 }
 
-.Register button {
+button {
     width: 80%;
     height: 30px;
     margin: auto;

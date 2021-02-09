@@ -4,11 +4,12 @@ import './App.css';
 
 import Navigation from "./components/common/navigation/Navigation";
 import Home from "./components/common/home/Home";
-import Register from "./components/user/register/Register";
-import Login from "./components/user/login/Login";
+import Register from "./components/user/Register";
+import Login from "./components/user/Login";
 import cookieParser from "./utils/cookies";
 import userService from "./services/user-services";
 import Logout from "./components/user/Logout";
+import Create from "./components/events/create/Create";
 
 function renderCmp(Cmp, otherProps) {
     return function (props) {
@@ -57,6 +58,7 @@ class App extends React.Component {
                     <Route path="/register" component={renderCmp(Register, {register: this.register})}/>
                     <Route path="/login" component={renderCmp(Login, {login: this.login})}/>
                     <Route path="/logout" component={renderCmp(Logout, {logout: this.logout})}/>
+                    <Route path="/create" component={Create}/>
                 </Switch>
             </div>
         );

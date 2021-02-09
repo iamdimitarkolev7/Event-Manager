@@ -2,9 +2,18 @@ const models = require('../models');
 
 module.exports = {
     get: (req, res, next) => {
-        models.Event.find().populate('admin')
-            .then((events) => res.send(events))
-            .catch(next);
+        const limit = Number(req.query.limit);
+
+        if (limit) {
+            models.Event.find().sort('name').limit(limit).populate('admin')
+                .exec(function (err, events) {
+                    res.send(events);
+                })
+        } else {
+            models.Event.find().populate('admin')
+                .then((events) => res.send(events))
+                .catch(next);
+        }
     },
 
     post: (req, res, next) => {

@@ -20,10 +20,10 @@ module.exports = {
         login: (req, res, next) => {
             const { username, password } = req.body;
             models.User.findOne({ username })
-                .then((user) => Promise.all([user, user.matchPassword(password)]))
+                .then((user) => !!user ? Promise.all([user, user.matchPassword(password)]) : [null, false])
                 .then(([user, match]) => {
                     if (!match) {
-                        res.status(401).send('Invalid password');
+                        res.status(401).send('Invalid username or password');
                         return;
                     }
 
@@ -35,9 +35,6 @@ module.exports = {
 
         logout: (req, res, next) => {
             const token = req.cookies[process.env.COOKIE];
-            console.log('-'.repeat(100));
-            console.log(token);
-            console.log('-'.repeat(100));
             models.TokenBlacklist.create({ token })
                 .then(() => {
                     res.clearCookie(process.env.COOKIE).send('Logout successfully!');

@@ -10,6 +10,7 @@ import cookieParser from "./utils/cookies";
 import userService from "./services/user-services";
 import Logout from "./components/user/Logout";
 import Create from "./components/events/create/Create";
+import NotFound from "./components/common/notFound/NotFound";
 
 function renderCmp(Cmp, otherProps) {
     return function (props) {
@@ -54,11 +55,12 @@ class App extends React.Component {
             <div className="App">
                 <Navigation isLoggedIn={isLoggedIn} logout={this.logout}/>
                 <Switch>
-                    <Route path="/" exact component={Home}/>
-                    <Route path="/register" component={renderCmp(Register, {register: this.register})}/>
-                    <Route path="/login" component={renderCmp(Login, {login: this.login})}/>
-                    <Route path="/logout" component={renderCmp(Logout, {logout: this.logout})}/>
-                    <Route path="/create" component={Create}/>
+                    <Route path="/" exact component={renderCmp(Home, {isLoggedIn})}/>
+                    {!isLoggedIn && <Route path="/register" component={renderCmp(Register, {register: this.register})}/>}
+                    {!isLoggedIn && <Route path="/login" component={renderCmp(Login, {login: this.login})}/>}
+                    {isLoggedIn && <Route path="/logout" component={renderCmp(Logout, {logout: this.logout})}/>}
+                    {isLoggedIn && <Route path="/create" component={Create}/>}
+                    <Route path="*" component={NotFound}/>
                 </Switch>
             </div>
         );

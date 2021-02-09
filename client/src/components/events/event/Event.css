@@ -3,13 +3,40 @@
     background-color: ghostwhite;
     border-radius: 15px;
     display: block;
-    padding-bottom: 50px;
+}
+
+.Event .description {
+    height: 50px;
+    padding: 20px;
+}
+
+.Event .creator {
+
 }
 
 .Event img {
-    max-height: 180px;
+    height: 180px;
     filter: brightness(60%);
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
     width: 100%;
+}
+
+.Event .likes {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.Event .likes i {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+}
+
+.Event .likes span {
+    position: absolute;
+    bottom: 0;
+    left: 40px;
 }

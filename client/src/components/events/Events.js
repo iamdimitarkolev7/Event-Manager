@@ -1,27 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Event from "./event/Event";
 
 import "./Events.css";
+import eventServices from "../../services/event-services";
+import isLoggedIn from "../../utils/auth";
 
-class Events extends React.Component {
-    constructor(props) {
-        super(props);
+const Events = ({limit}) => {
+    const [events, setEvents] = useState([]);
 
-        this.state = {
-            events: []
+    useEffect(() => {
+        if (isLoggedIn) {
+            eventServices.get().then(ev => {
+                setEvents(ev);
+            })
+        } else {
+            eventServices.get(limit).then(ev => {
+                setEvents(ev);
+            })
         }
-    }
+    })
 
-    getEvents = async () => {
-        const promise = await fetch('http://localhost:4000/event');
-        const events = await promise.json();
-
-        this.setState({events});
-    }
-
-    renderEvents() {
-        const {events} = this.state;
-
+    const renderEvents = () => {
         return events.map(event => {
             return (
                 <Event
@@ -31,21 +30,15 @@ class Events extends React.Component {
                     creator={event.admin.username}
                     likes={event.likes.length}
                 />
-                )
+            )
         })
     }
 
-    componentDidMount() {
-        this.getEvents();
-    }
-
-    render() {
-        return (
-            <div className="Events">
-                {this.renderEvents()}
-            </div>
-        )
-    }
+    return (
+        <div className="Events">
+            {renderEvents()}
+        </div>
+    )
 }
 
 export default Events;

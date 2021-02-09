@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./Event.css";
+import isLoggedIn from "../../../utils/auth";
 
 class Event extends React.Component {
     constructor(props) {
@@ -16,10 +17,9 @@ class Event extends React.Component {
                     <span>Creator: </span>
                     {this.props.creator}
                 </div>
-                <div className="likes">
+                <div className="likes greyLikes">
                     <i className="fas fa-thumbs-up"></i>
-                    {this.props.likes}
-                    <span> Likes</span>
+                    <span>{this.props.likes} Likes</span>
                 </div>
             </div>
         )

@@ -7,7 +7,7 @@ const userService = {
                 'Content-type': 'application/json'
             },
             credentials: 'include'
-        }).then(res => res.json());
+        }).then(res => res.json()).then(user => sessionStorage.setItem('user', JSON.stringify(user)));
     },
     login: function(data) {
         return fetch(`http://localhost:4000/user/login`, {
@@ -17,13 +17,15 @@ const userService = {
                 'Content-type': 'application/json'
             },
             credentials: 'include'
-        }).then(res => res.json());
+        }).then(res => {
+            return res.json();
+        }).then(user => sessionStorage.setItem('user', JSON.stringify(user)));
     },
     logout: function() {
         return fetch(`http://localhost:4000/user/logout`, {
             method: 'POST',
             credentials: 'include'
-        }).then(res => res.text());
+        }).then(res => res.text()).then(() => sessionStorage.clear());
     }
 }
 

@@ -4,6 +4,7 @@ import Event from "./event/Event";
 import "./Events.css";
 import eventServices from "../../services/event-services";
 import isLoggedIn from "../../utils/auth";
+import isAdmin from "../../utils/isAdmin";
 
 const Events = ({limit}) => {
     const [events, setEvents] = useState([]);
@@ -24,11 +25,9 @@ const Events = ({limit}) => {
         return events.map(event => {
             return (
                 <Event
+                    isAdmin={isAdmin(event)}
                     key={event._id}
-                    description={event.description}
-                    imageURL={event.imageURL}
-                    creator={event.admin.username}
-                    likes={event.likes.length}
+                    event={event}
                 />
             )
         })

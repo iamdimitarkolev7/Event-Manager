@@ -10,10 +10,6 @@
     padding: 20px;
 }
 
-.Event .creator {
-
-}
-
 .Event img {
     height: 180px;
     filter: brightness(60%);
@@ -22,7 +18,7 @@
     width: 100%;
 }
 
-.Event .likes {
+.Event .likes, .buttons {
     position: relative;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -31,12 +27,34 @@
 
 .Event .likes i {
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     left: 20px;
 }
 
 .Event .likes span {
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     left: 40px;
 }
+
+.Event .buttons .links {
+    width: 50px;
+    position: absolute;
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid #282c34;
+    border-radius: 3px;
+}
+
+.Event .links:nth-child(1) {
+    right: 100px;
+    background-color: #017fbe;
+    color: ghostwhite;
+}
+
+.Event .links:nth-child(2) {
+    right: 20px;
+    background-color: crimson;
+    color: ghostwhite;
+}
+

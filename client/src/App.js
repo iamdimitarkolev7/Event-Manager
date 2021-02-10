@@ -11,6 +11,7 @@ import userService from "./services/user-services";
 import Logout from "./components/user/Logout";
 import Create from "./components/events/create/Create";
 import NotFound from "./components/common/notFound/NotFound";
+import Edit from "./components/events/edit/Edit";
 
 function renderCmp(Cmp, otherProps) {
     return function (props) {
@@ -60,6 +61,7 @@ class App extends React.Component {
                     {!isLoggedIn && <Route path="/login" component={renderCmp(Login, {login: this.login})}/>}
                     {isLoggedIn && <Route path="/logout" component={renderCmp(Logout, {logout: this.logout})}/>}
                     {isLoggedIn && <Route path="/create" component={Create}/>}
+                    {isLoggedIn && <Route path="/edit" component={renderCmp(Edit)}/> }
                     <Route path="*" component={NotFound}/>
                 </Switch>
             </div>

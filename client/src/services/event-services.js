@@ -14,6 +14,12 @@ const eventServices = {
             },
             credentials: 'include'
         }).then(res => res.json());
+    },
+    delete: function (id) {
+        return fetch('http://localhost:4000/event/delete/' + id, {
+            method: 'DELETE',
+            credentials: 'include'
+        }).then(res => res.json());
     }
 }
 

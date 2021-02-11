@@ -16,35 +16,74 @@ module.exports = {
         }
     },
 
-    post: (req, res, next) => {
-        const { description, location, name, date, imageURL } = req.body;
-        const { _id } = req.user;
+    post: {
+        create: (req, res, next) => {
+            const {description, location, name, date, imageURL} = req.body;
+            const {_id} = req.user;
 
-        models.Event.create({ description, location, name, date, imageURL, admin: _id })
-            .then((createdEvent) => {
-                return Promise.all([
-                    models.User.updateOne({ _id }, { $push: { createdEvents: createdEvent } }),
-                    models.Event.findOne({ _id: createdEvent._id })
-                ]);
-            })
-            .then(([modifiedObj, origamiObj]) => {
-                res.send(origamiObj);
-            })
-            .catch(next);
+            models.Event.create({description, location, name, date, imageURL, admin: _id})
+                .then((createdEvent) => {
+                    return Promise.all([
+                        models.User.updateOne({_id}, {$push: {createdEvents: createdEvent}}),
+                        models.Event.findOne({_id: createdEvent._id})
+                    ]);
+                })
+                .then(([userObj, eventObj]) => {
+                    res.send(eventObj);
+                })
+                .catch(next);
+        }
     },
 
-    put: (req, res, next) => {
-        const id = req.params.id;
-        const { description } = req.body;
-        models.Event.updateOne({ _id: id }, { description })
-            .then((updatedEvent) => res.send(updatedEvent))
-            .catch(next)
+    put: {
+        edit: (req, res, next) => {
+            const id = req.params.id;
+            const {name, description, imageURL, date, location} = req.body;
+            models.Event.updateOne({_id: id}, {name, description, imageURL, date, location})
+                .then((updatedEvent) => res.send(updatedEvent))
+                .catch(next)
+        },
+        like: (req, res, next) => {
+            const id = req.params.id;
+            const {_id} = req.user;
+
+            if (models.Event.find({_id: id, likes: {$nin: [_id]}})) {
+                models.Event.findByIdAndUpdate(id, {$push: {likes: _id}})
+                    .then(updatedEvent => {
+                        return Promise.all([
+                            models.User.findByIdAndUpdate(_id, {$push: {likedEvents: id}}),
+                            models.Event.findOne({_id: updatedEvent._id})
+                        ]);
+                    })
+                    .then(([userObj, eventObj]) => res.send(eventObj))
+                    .catch(next);
+            }
+            if (models.Event.find({_id: id, likes: {$in: [_id]}})){
+                models.Event.findByIdAndUpdate(id, {$pull: {likes: _id}})
+                    .then(updatedEvent => {
+                        return Promise.all([
+                            models.User.findByIdAndUpdate(_id, {$pull: {likedEvents: id}}),
+                            models.Event.findOne({_id: updatedEvent._id})
+                        ]);
+                    })
+                    .then(([userObj, eventObj]) => res.send(eventObj))
+                    .catch(next);
+            }
+        }
     },
 
     delete: (req, res, next) => {
         const id = req.params.id;
+        const {_id} = req.user;
+
         models.Event.deleteOne({ _id: id })
-            .then((deletedEvent) => res.send(deletedEvent))
+            .then((deletedEvent) => {
+                return Promise.all([
+                    models.User.updateOne({_id}, {$pop: {createdEvents: deletedEvent}}),
+                    models.Event.findOne({_id: deletedEvent._id})
+                ]);
+            })
+            .then(([obj, deletedEvent]) => res.send(deletedEvent))
             .catch(next)
     }
 };

@@ -25,16 +25,23 @@
     margin-bottom: 20px;
 }
 
-.Event .likes i {
+.Event .likes .likeButton {
+    width: 20px;
+    height: 20px;
+    background-color: ghostwhite;
     position: absolute;
-    bottom: 5px;
+    bottom: -18px;
     left: 20px;
+}
+
+.Event .likes i {
+    color: black;
 }
 
 .Event .likes span {
     position: absolute;
     bottom: 5px;
-    left: 40px;
+    left: 50px;
 }
 
 .Event .buttons .links {

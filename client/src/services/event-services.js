@@ -20,6 +20,16 @@ const eventServices = {
             method: 'DELETE',
             credentials: 'include'
         }).then(res => res.json());
+    },
+    like: function (id) {
+        return fetch('http://localhost:4000/event/like/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+                'Content-length': '0'
+            },
+            credentials: 'include'
+        }).then(res => res.json());
     }
 }
 

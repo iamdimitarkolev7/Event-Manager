@@ -15,7 +15,8 @@ const Home = ({isLoggedIn}) => {
 
     return (
         <div className="Home">
-            <h1>SOME OF THE LATEST EVENTS</h1>
+            {isLoggedIn ? <h1>ALL EVENTS</h1>
+                : <h1>SOME OF THE LATEST EVENTS</h1> }
             <Events limit={limit}/>
         </div>
     )

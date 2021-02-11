@@ -46,8 +46,8 @@ class Edit extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const id = this.props.match.params.id.toString();
-        const {name, description, date, imageURL, location} = this.state;
-        eventServices.edit(id, {name, description, date, imageURL, location})
+        const {name, description, imageURL, location} = this.state;
+        eventServices.edit(id, {name, description, imageURL, location})
             .then(() => {
                 this.props.history.push('/');
             })

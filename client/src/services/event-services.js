@@ -18,13 +18,13 @@ const eventServices = {
     edit: function (id, data) {
         debugger;
         return fetch('http://localhost:4000/event/edit/' + id, {
-            method: 'POST',
+            method: 'PUT',
             body: JSON.stringify(data),
             headers: {
                 'Content-type': 'application/json'
             },
             credentials: 'include'
-        }).then(res => res.json()).catch(err => console.log(err));
+        }).then(res => res.json());
     },
     delete: function (id) {
         return fetch('http://localhost:4000/event/delete/' + id, {
@@ -36,8 +36,7 @@ const eventServices = {
         return fetch('http://localhost:4000/event/like/' + id, {
             method: 'PUT',
             headers: {
-                'Content-type': 'application/json',
-                'Content-length': '0'
+                'Content-type': 'application/json'
             },
             credentials: 'include'
         }).then(res => res.json());

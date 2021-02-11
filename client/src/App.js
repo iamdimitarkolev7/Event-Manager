@@ -62,7 +62,7 @@ class App extends React.Component {
                     {!isLoggedIn && <Route path="/login" component={renderCmp(Login, {login: this.login})}/>}
                     {isLoggedIn && <Route path="/logout" component={renderCmp(Logout, {logout: this.logout})}/>}
                     {isLoggedIn && <Route path="/create" component={Create}/>}
-                    {isLoggedIn && <Route path="/edit" component={renderCmp(Edit)}/> }
+                    {isLoggedIn && <Route path="/edit/:id" component={renderCmp(Edit)}/> }
                     {isLoggedIn && <Route path="/profile" component={Profile}/>}
                     <Route path="*" component={NotFound}/>
                 </Switch>

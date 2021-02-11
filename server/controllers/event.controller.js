@@ -39,7 +39,7 @@ module.exports = {
         edit: (req, res, next) => {
             const id = req.params.id;
             const {name, description, imageURL, date, location} = req.body;
-            models.Event.updateOne({_id: id}, {name, description, imageURL, date, location})
+            models.Event.findByIdAndUpdate(id, {name, description, imageURL, date, location})
                 .then((updatedEvent) => res.send(updatedEvent))
                 .catch(next)
         },

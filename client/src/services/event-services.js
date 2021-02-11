@@ -15,6 +15,17 @@ const eventServices = {
             credentials: 'include'
         }).then(res => res.json());
     },
+    edit: function (id, data) {
+        debugger;
+        return fetch('http://localhost:4000/event/edit/' + id, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-type': 'application/json'
+            },
+            credentials: 'include'
+        }).then(res => res.json()).catch(err => console.log(err));
+    },
     delete: function (id) {
         return fetch('http://localhost:4000/event/delete/' + id, {
             method: 'DELETE',

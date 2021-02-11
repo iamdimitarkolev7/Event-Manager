@@ -7,6 +7,11 @@ import eventServices from "../../../services/event-services";
 const Event = ({event, isAdmin, _id}) => {
     const history = useHistory();
 
+    const handleEdit = (e) => {
+        const id = e.currentTarget.id;
+        history.push('/edit/' + id);
+    }
+
     const handleDelete = (e) => {
         const id = e.currentTarget.id;
         eventServices.delete(id).then(() => {
@@ -35,7 +40,7 @@ const Event = ({event, isAdmin, _id}) => {
                     <span>{event.likes.length} Likes</span>
                 </div> :
                 <div className="buttons">
-                    <Link className="links" to="/edit">Edit</Link>
+                    <button className="links" id={event._id} onClick={handleEdit}>Edit</button>
                     <button className="links" id={event._id} onClick={handleDelete}>Delete</button>
                 </div>}
         </div>

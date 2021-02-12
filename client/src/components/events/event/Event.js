@@ -3,6 +3,7 @@ import {Link,useHistory } from "react-router-dom";
 
 import "./Event.css";
 import eventServices from "../../../services/event-services";
+import isLoggedIn from "../../../utils/auth";
 
 const Event = ({event, isAdmin, _id}) => {
     const history = useHistory();
@@ -29,16 +30,18 @@ const Event = ({event, isAdmin, _id}) => {
     return (
         <div className="Event" key={_id}>
             <img src={event.imageURL} alt="alt"/>
+            <p className="name">{event.name}</p>
             <p className="description">{event.description}</p>
             <div className="creator">
                 <span>Creator: </span>
                 {event.admin.firstName + ' ' + event.admin.lastName}
             </div>
-            {!isAdmin ? <div className="likes ">
-                    <button className="likeButton" id={event._id} onClick={hitLike}><i className="far fa-thumbs-up"></i>
-                    </button>
-                    <span>{event.likes.length} Likes</span>
-                </div> :
+            {!isAdmin ?
+                    <div className="likes ">
+                        <i className="far fa-thumbs-up" id={event._id} onClick={hitLike}></i>
+                        <span> { event.likes.length + (event.likes.length === 1 ? " Like" : " Likes")}</span>
+                    </div>
+                 :
                 <div className="buttons">
                     <button className="links" id={event._id} onClick={handleEdit}>Edit</button>
                     <button className="links" id={event._id} onClick={handleDelete}>Delete</button>

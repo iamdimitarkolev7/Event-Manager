@@ -47,7 +47,7 @@ module.exports = {
             const id = req.params.id;
             const {_id} = req.user;
 
-            if (models.Event.find({_id: id, likes: {$nin: [_id]}})) {
+            if (!!models.Event.find({_id: id, likes: {$nin: [_id]}})) {
                 models.Event.findByIdAndUpdate(id, {$push: {likes: _id}})
                     .then(updatedEvent => {
                         return Promise.all([
@@ -58,7 +58,7 @@ module.exports = {
                     .then(([userObj, eventObj]) => res.send(eventObj))
                     .catch(next);
             }
-            if (models.Event.find({_id: id, likes: {$in: [_id]}})){
+            if (!!models.Event.find({_id: id, likes: {$in: [_id]}})){
                 models.Event.findByIdAndUpdate(id, {$pull: {likes: _id}})
                     .then(updatedEvent => {
                         return Promise.all([

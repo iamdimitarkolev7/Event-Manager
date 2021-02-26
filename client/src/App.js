@@ -6,13 +6,13 @@ import Navigation from "./components/common/navigation/Navigation";
 import Home from "./components/common/home/Home";
 import Register from "./components/user/Register";
 import Login from "./components/user/Login";
-import cookieParser from "./utils/cookies";
 import userService from "./services/user-services";
 import Logout from "./components/user/Logout";
 import Create from "./components/events/create/Create";
 import NotFound from "./components/common/notFound/NotFound";
 import Edit from "./components/events/edit/Edit";
 import Profile from "./components/user/profile/Profile";
+import isLoggedIn from "./utils/auth";
 
 function renderCmp(Cmp, otherProps) {
     return function (props) {
@@ -23,9 +23,8 @@ function renderCmp(Cmp, otherProps) {
 class App extends React.Component {
     constructor(props) {
         super(props);
-        const cookies = cookieParser();
-        const isLoggedIn = !!cookies['x-auth-token'];
         this.state = { isLoggedIn };
+        this.user = null;
     }
 
     register = (data, history) => {
@@ -63,7 +62,7 @@ class App extends React.Component {
                     {isLoggedIn && <Route path="/logout" component={renderCmp(Logout, {logout: this.logout})}/>}
                     {isLoggedIn && <Route path="/create" component={Create}/>}
                     {isLoggedIn && <Route path="/edit/:id" component={renderCmp(Edit)}/> }
-                    {isLoggedIn && <Route path="/profile" component={Profile}/>}
+                    {isLoggedIn && <Route path="/profile" component={renderCmp(Profile)}/>}
                     <Route path="*" component={NotFound}/>
                 </Switch>
             </div>

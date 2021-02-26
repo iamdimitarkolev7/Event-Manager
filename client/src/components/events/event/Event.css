@@ -25,6 +25,10 @@
     margin-bottom: 20px;
 }
 
+.Event .likes .blue {
+    color: #00b7ff;
+}
+
 .Event .likes i {
     width: 20px;
     height: 20px;

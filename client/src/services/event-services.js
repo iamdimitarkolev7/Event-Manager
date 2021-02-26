@@ -40,6 +40,15 @@ const eventServices = {
             },
             credentials: 'include'
         }).then(res => res.json());
+    },
+    dislike: function (id) {
+        return fetch('http://localhost:4000/event/dislike/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            credentials: 'include'
+        }).then(res => res.json());
     }
 }
 

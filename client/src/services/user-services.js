@@ -1,4 +1,13 @@
 const userService = {
+    get: function(id) {
+        return fetch('http://localhost:4000/user/' + id, {
+           method: 'GET',
+           credentials: 'include'
+        }).then(res => res.json()).then(user => {
+            sessionStorage.clear();
+            sessionStorage.setItem('user', JSON.stringify(user));
+        });
+    },
     register: function(data) {
         return fetch(`http://localhost:4000/user/register`, {
             method: 'POST',

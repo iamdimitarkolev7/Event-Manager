@@ -3,10 +3,19 @@ const models = require('../models');
 const utils = require('../utils');
 
 module.exports = {
-    get: (req, res, next) => {
-        models.User.find()
-            .then((users) => res.send(users))
-            .catch(next)
+    get: {
+         all: (req, res, next) => {
+            models.User.find()
+                .then((users) => res.send(users))
+                .catch(next)
+        },
+        one: (req, res, next) => {
+             const {_id} = req.user;
+
+             models.User.findById(_id)
+                 .then(user => res.send(user))
+                 .catch(next);
+        }
     },
 
     post: {

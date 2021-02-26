@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 
 import './Profile.css';
 import userImg from '../../../images/user.png';
+import userService from "../../../services/user-services";
 
 const Profile = () => {
     const [display, setDisplay] = useState('createdEvents');

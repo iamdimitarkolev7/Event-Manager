@@ -47,28 +47,29 @@ module.exports = {
             const id = req.params.id;
             const {_id} = req.user;
 
-            if (!!models.Event.find({_id: id, likes: {$nin: [_id]}})) {
-                models.Event.findByIdAndUpdate(id, {$push: {likes: _id}})
-                    .then(updatedEvent => {
-                        return Promise.all([
-                            models.User.findByIdAndUpdate(_id, {$push: {likedEvents: id}}),
-                            models.Event.findOne({_id: updatedEvent._id})
-                        ]);
-                    })
-                    .then(([userObj, eventObj]) => res.send(eventObj))
-                    .catch(next);
-            }
-            if (!!models.Event.find({_id: id, likes: {$in: [_id]}})){
-                models.Event.findByIdAndUpdate(id, {$pull: {likes: _id}})
-                    .then(updatedEvent => {
-                        return Promise.all([
-                            models.User.findByIdAndUpdate(_id, {$pull: {likedEvents: id}}),
-                            models.Event.findOne({_id: updatedEvent._id})
-                        ]);
-                    })
-                    .then(([userObj, eventObj]) => res.send(eventObj))
-                    .catch(next);
-            }
+            models.Event.findByIdAndUpdate(id, {$push: {likes: _id}})
+                .then(updatedEvent => {
+                    return Promise.all([
+                        models.User.findByIdAndUpdate(_id, {$push: {likedEvents: id}}),
+                        models.Event.findOne({_id: updatedEvent._id})
+                    ]);
+                })
+                .then(([userObj, eventObj]) => res.send(eventObj))
+                .catch(next);
+        },
+        dislike: (req, res, next) => {
+            const id = req.params.id;
+            const {_id} = req.user;
+
+            models.Event.findByIdAndUpdate(id, {$pull: {likes: _id}})
+                .then(updatedEvent => {
+                    return Promise.all([
+                        models.User.findByIdAndUpdate(_id, {$pull: {likedEvents: id}}),
+                        models.Event.findOne({_id: updatedEvent._id})
+                    ]);
+                })
+                .then(([userObj, eventObj]) => res.send(eventObj))
+                .catch(next);
         }
     },
 
@@ -79,7 +80,7 @@ module.exports = {
         models.Event.deleteOne({ _id: id })
             .then((deletedEvent) => {
                 return Promise.all([
-                    models.User.updateOne({_id}, {$pop: {createdEvents: deletedEvent}}),
+                    models.User.updateOne({_id}, {$pull: {createdEvents: id}}),
                     models.Event.findOne({_id: deletedEvent._id})
                 ]);
             })

@@ -65,3 +65,7 @@
     color: ghostwhite;
 }
 
+.Event img:hover {
+    filter: brightness(40%);
+    cursor: pointer;
+}

@@ -1,17 +1,26 @@
 const models = require('../models');
 
 module.exports = {
-    get: (req, res, next) => {
-        const limit = Number(req.query.limit);
+    get: {
+        all: (req, res, next) => {
+            const limit = Number(req.query.limit);
 
-        if (limit) {
-            models.Event.find().sort('name').limit(limit).populate('admin')
-                .exec(function (err, events) {
-                    res.send(events);
-                })
-        } else {
-            models.Event.find().populate('admin')
-                .then((events) => res.send(events))
+            if (limit) {
+                models.Event.find().sort('name').limit(limit).populate('admin')
+                    .exec(function (err, events) {
+                        res.send(events);
+                    })
+            } else {
+                models.Event.find().populate('admin')
+                    .then((events) => res.send(events))
+                    .catch(next);
+            }
+        },
+        details: (req, res, next) => {
+            const id = req.params.id;
+
+            models.Event.findById(id).populate('admin')
+                .then(ev => res.send(ev))
                 .catch(next);
         }
     },
@@ -28,9 +37,7 @@ module.exports = {
                         models.Event.findOne({_id: createdEvent._id})
                     ]);
                 })
-                .then(([userObj, eventObj]) => {
-                    res.send(eventObj);
-                })
+                .then(([userObj, eventObj]) => res.send(eventObj))
                 .catch(next);
         }
     },

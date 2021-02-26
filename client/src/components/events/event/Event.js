@@ -3,6 +3,7 @@ import {useHistory } from "react-router-dom";
 
 import "./Event.css";
 import eventServices from "../../../services/event-services";
+import isLoggedIn from "../../../utils/auth";
 
 const Event = ({event, isAdmin, isLiked}) => {
     const [likeState, setLikeState] = useState(isLiked);
@@ -36,9 +37,16 @@ const Event = ({event, isAdmin, isLiked}) => {
         }).catch(err => console.log(err));
     }
 
+    const showDetails = (e) => {
+        const id = e.currentTarget.id;
+        eventServices.details(id).then(() => {
+            history.push('/details/' + id);
+        }).catch(err => console.log(err));
+    }
+
     return (
         <div className="Event" key={event._id}>
-            <img src={event.imageURL} alt="alt"/>
+            <img src={event.imageURL} alt="alt" onClick={showDetails} id={event._id}/>
             <p className="name">{event.name}</p>
             <p className="description">{event.description}</p>
             <div className="creator">
@@ -46,7 +54,7 @@ const Event = ({event, isAdmin, isLiked}) => {
                 {event.admin.firstName + ' ' + event.admin.lastName}
             </div>
                 {!isAdmin ?
-                <div className="likes ">
+                <div className="likes">
                 {likeState ?
                     <i className="far fa-thumbs-up blue" id={event._id} onClick={hitDislike}></i> :
                     <i className="far fa-thumbs-up" id={event._id} onClick={hitLike}></i>

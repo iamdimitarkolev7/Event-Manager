@@ -2,7 +2,9 @@ const controllers = require('../controllers/');
 const router = require('express').Router();
 const { auth } = require('../utils');
 
-router.get('/', controllers.event.get);
+router.get('/', controllers.event.get.all);
+
+router.get('/details/:id', controllers.event.get.details);
 
 router.post('/create', auth(), controllers.event.post.create);
 

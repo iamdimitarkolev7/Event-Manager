@@ -1,0 +1,11 @@
+.Details {
+    background-color: ghostwhite;
+    border-radius: 5px;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.Details img {
+    width: 100%;
+}

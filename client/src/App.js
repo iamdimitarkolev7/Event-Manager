@@ -12,6 +12,7 @@ import Create from "./components/events/create/Create";
 import NotFound from "./components/common/notFound/NotFound";
 import Edit from "./components/events/edit/Edit";
 import Profile from "./components/user/profile/Profile";
+import Details from "./components/events/details/Details";
 import isLoggedIn from "./utils/auth";
 
 function renderCmp(Cmp, otherProps) {
@@ -61,6 +62,7 @@ class App extends React.Component {
                     {!isLoggedIn && <Route path="/login" component={renderCmp(Login, {login: this.login})}/>}
                     {isLoggedIn && <Route path="/logout" component={renderCmp(Logout, {logout: this.logout})}/>}
                     {isLoggedIn && <Route path="/create" component={Create}/>}
+                    {isLoggedIn && <Route path="/details/:id" component={renderCmp(Details)}/>}
                     {isLoggedIn && <Route path="/edit/:id" component={renderCmp(Edit)}/> }
                     {isLoggedIn && <Route path="/profile" component={renderCmp(Profile)}/>}
                     <Route path="*" component={NotFound}/>

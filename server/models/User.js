@@ -25,8 +25,8 @@ const UserSchema = new mongoose.Schema({
        minlength: 6,
        maxlength: 255
    },
-    createdEvents: [{ type: mongoose.Types.ObjectId, ref: "Events" }],
-    likedEvents: [{type: mongoose.Types.ObjectId, ref: "Events"}]
+    createdEvents: [{ type: mongoose.Types.ObjectId, ref: "Event" }],
+    likedEvents: [{type: mongoose.Types.ObjectId, ref: "Event"}]
 });
 
 UserSchema.methods = {

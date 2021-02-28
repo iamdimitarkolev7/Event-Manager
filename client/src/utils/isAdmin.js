@@ -1,7 +1,7 @@
 const isAdmin = (event) => {
-    const currentUser = JSON.parse(sessionStorage.getItem('user'));
+    const userId = JSON.parse(sessionStorage.getItem('user'))._id;
 
-    return !!currentUser ? currentUser.createdEvents.some(id => id === event._id) : false;
+    return event.admin._id === userId;
 }
 
 export default isAdmin;

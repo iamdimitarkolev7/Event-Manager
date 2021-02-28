@@ -13,8 +13,15 @@ module.exports = {
              const {_id} = req.user;
 
              models.User.findById(_id)
-                 .then(user => res.send(user))
-                 .catch(next);
+                 .populate('likedEvents')
+                 .populate('createdEvents')
+                 .exec(function (err, result) {
+                     if (err) {
+                         console.log(err);
+                     } else {
+                         res.send(result);
+                     }
+                 });
         }
     },
 

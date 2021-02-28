@@ -5,12 +5,29 @@
 }
 
 .Profile .likedEvents, .createdEvents {
+    max-width: 40%;
     margin: 0 auto;
+}
+
+.Profile h1 {
     background-color: ghostwhite;
+    border-radius: 15px;
+    width: 350px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    color: #017fbe;
+}
+
+.Profile .Event {
+    width: 70%;
+    height: 430px;
+    margin: 0 auto;
+    margin-bottom: 30px;
 }
 
 .Profile .profile-data {
-    width: 20%;
+    width: 30%;
+    height: 30%;
     margin: 0 auto;
     background-color: ghostwhite;
     border-radius: 5px;

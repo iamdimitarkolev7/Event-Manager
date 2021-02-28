@@ -1,11 +1,41 @@
 .Details {
     background-color: ghostwhite;
     border-radius: 5px;
-    width: 60%;
+    width: 40%;
     margin: 0 auto;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .Details img {
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
     width: 100%;
+}
+
+.Details .question-answers {
+    padding: 20px;
+}
+
+.Details .question {
+    font-style: italic;
+}
+
+.Details p {
+    font-weight: bold;
+}
+
+.Details .question:nth-child(1) {
+    margin-top: 100px;
+}
+
+.Details .likes .blue {
+    color: #00b7ff;
+}
+
+.Details .likes i {
+    width: 20px;
+    height: 20px;
+    background-color: ghostwhite;
+    color: black;
 }

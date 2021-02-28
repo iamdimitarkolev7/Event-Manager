@@ -3,7 +3,6 @@ import {useHistory } from "react-router-dom";
 
 import "./Event.css";
 import eventServices from "../../../services/event-services";
-import isLoggedIn from "../../../utils/auth";
 
 const Event = ({event, isAdmin, isLiked}) => {
     const [likeState, setLikeState] = useState(isLiked);

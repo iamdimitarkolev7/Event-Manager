@@ -2,6 +2,8 @@
 
 A web application which helps event organizers to manage their events and also helps other people to look for a suitable event for them.
 
+![Screenshot](PROJECT.png)
+
 ## Technologies:
 * Backend: Express.js, Node.js, MongoDB
 * Frontend: React

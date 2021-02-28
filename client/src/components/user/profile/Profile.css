@@ -20,9 +20,13 @@
 
 .Profile .Event {
     width: 70%;
-    height: 430px;
+    height: inherit;
     margin: 0 auto;
     margin-bottom: 30px;
+}
+
+.Profile .Event .buttons {
+    padding-bottom: 40px;
 }
 
 .Profile .profile-data {

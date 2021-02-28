@@ -3,8 +3,9 @@ import {useHistory } from "react-router-dom";
 
 import "./Event.css";
 import eventServices from "../../../services/event-services";
+import isLoggedIn from "../../../utils/auth";
 
-const Event = ({event, isAdmin, isLiked}) => {
+const Event = ({event, isAdmin, isLiked, isLoggedIn}) => {
     const [likeState, setLikeState] = useState(isLiked);
     const history = useHistory();
 
@@ -45,21 +46,30 @@ const Event = ({event, isAdmin, isLiked}) => {
 
     return (
         <div className="Event" key={event._id}>
-            <img src={event.imageURL} alt="alt" onClick={showDetails} id={event._id}/>
+            {
+                isLoggedIn ?
+                    <img src={event.imageURL} alt="alt" className="details" onClick={showDetails} id={event._id}/> :
+                    <img src={event.imageURL} alt="alt" id={event._id}/>
+            }
             <p className="name">{event.name}</p>
             <p className="description">{event.description}</p>
-            <div className="creator">
-                <span>Creator: </span>
-                {event.admin.firstName + ' ' + event.admin.lastName}
-            </div>
+            { event.admin.firstName ?
+                <div className="creator">
+                    <span>Creator: </span>
+                    {event.admin.firstName + ' ' + event.admin.lastName}
+                </div> : null
+            }
                 {!isAdmin ?
+                    <div>
+                        {event.admin.firstName ?
                 <div className="likes">
                 {likeState ?
                     <i className="far fa-thumbs-up blue" id={event._id} onClick={hitDislike}></i> :
                     <i className="far fa-thumbs-up" id={event._id} onClick={hitLike}></i>
                 }
                 <span> {event.likes.length + (event.likes.length === 1 ? " Like" : " Likes")}</span>
-                </div>
+                </div> : null }
+                    </div>
                 :
                 <div className="buttons">
                 <button className="links" id={event._id} onClick={handleEdit}>Edit</button>

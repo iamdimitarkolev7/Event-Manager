@@ -60,7 +60,7 @@ const Details = () => {
                     <span className="question">Where will the event be held?</span>
                     <p className="location">{event.location}</p>
                     <span className="question">When will the event be held?</span>
-                    <p className="date">{event.date.split('T')[0] + ' at ' + event.date.split('T')[1].slice(0, 5)}</p>
+                    <p className="date">{event.date}</p>
                     <span className="question">What is the event about?</span>
                     <p className="description">{event.description}</p>
                 </div>
@@ -82,7 +82,7 @@ const Details = () => {
         )
     }
 
-    return Object.keys(event).length !== 0 ? render() : <span>Loading...</span>
+    return Object.keys(event).length  ? render() : <span>Loading...</span>
 }
 
 export default Details;

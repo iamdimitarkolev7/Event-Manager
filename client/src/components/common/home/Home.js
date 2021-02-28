@@ -29,6 +29,7 @@ const Home = ({isLoggedIn}) => {
                         isLiked={isLiked(event)}
                         key={event._id}
                         event={event}
+                        isLoggedIn={true}
                     />
                 )
             })
@@ -40,6 +41,7 @@ const Home = ({isLoggedIn}) => {
                         isLiked={false}
                         key={event._id}
                         event={event}
+                        isLoggedIn={false}
                     />
                 )
             })

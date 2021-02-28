@@ -3,10 +3,7 @@ import React, {useEffect, useState} from "react";
 import './Profile.css';
 import userImg from '../../../images/user.png';
 import userService from "../../../services/user-services";
-import eventServices from "../../../services/event-services";
 import Event from "../../events/event/Event";
-import isAdmin from "../../../utils/isAdmin";
-import isLiked from "../../../utils/isLiked";
 
 const Profile = () => {
     const [display, setDisplay] = useState('createdEvents');
@@ -33,12 +30,14 @@ const Profile = () => {
 
     const renderLikedEvents = () => {
         return likedEvents.map(event => {
+
             return (
                 <Event
                     isAdmin={false}
                     isLiked={true}
                     key={event._id}
                     event={event}
+                    display="profile"
                 />
             )
         })
@@ -72,7 +71,7 @@ const Profile = () => {
                 <div className="profile-data">
                     <img src={userImg} alt="alt"/>
                     <p className="name">{user.firstName.toUpperCase() + ' ' + user.lastName.toUpperCase()}</p>
-                    <p className="username">{user.username}</p>
+                    <p className="username">{ '@' + user.username}</p>
                     <p className="liked-events">Liked events: {user.likedEvents.length}</p>
                     <p className="created-events">Created events: {user.createdEvents.length}</p>
                     <div className="buttons">

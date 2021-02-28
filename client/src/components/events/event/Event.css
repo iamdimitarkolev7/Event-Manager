@@ -65,7 +65,7 @@
     color: ghostwhite;
 }
 
-.Event img:hover {
+.Event .details:hover {
     filter: brightness(40%);
     cursor: pointer;
 }
